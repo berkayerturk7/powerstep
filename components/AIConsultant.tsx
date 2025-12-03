@@ -1,7 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Send, Loader2, User, X, MessageSquareText, ChevronDown } from 'lucide-react';
-import { generateProjectScope } from '../services/geminiService';
 import { BotState, ChatMessage } from '../types';
 
 const AIConsultant: React.FC = () => {
