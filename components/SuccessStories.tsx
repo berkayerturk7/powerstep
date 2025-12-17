@@ -47,13 +47,13 @@ const stories: Story[] = [
     ],
     stat: "Geliştirme Süresi: 2 Hafta",
     images: [
-      "https://lh3.googleusercontent.com/d/1JIV82tCLOdeIeBcsQwITd_e6FAGXTZ68=w1920?authuser=0", // Dashboard/Ana Ekran
-      "https://lh3.googleusercontent.com/d/1V9TllQa1gtvQNrpexvufGM4byIPn3Ehv=w1920?authuser=0", // Liste
-      "https://lh3.googleusercontent.com/d/1bpgVBZCwPzSSPu-Sihl4ZrTlB4UCJm0H=w1920?authuser=0", // Detay
-      "https://lh3.googleusercontent.com/d/1v4tpnP_ZmgIN9Woz0gUNwW-NLtYTxBfb=w1920?authuser=0"  // E-posta Görüntüsü
+      "https://lh3.googleusercontent.com/d/1sUibfS87tPLSe7F91u6a7ZF3YTDX3I0k=w1920?authuser=0", // Yeni Görsel 1
+      "https://lh3.googleusercontent.com/d/1QVFGVZSrYRMGZShiIMQv-Jl8S8COjtkt=w1920?authuser=0", // Yeni Görsel 2
+      "https://lh3.googleusercontent.com/d/1Og8lqOcYa4CcSZ9plZvn0pvg0nIJFq6w=w1920?authuser=0", // Yeni Görsel 3
+      "https://lh3.googleusercontent.com/d/1osMLBZk55ybQIna717-pGSzfTr61aOxM=w1920?authuser=0"  // Yeni Görsel 4
     ],
-    // Mobilde de aynı Dashboard görselini kullanıyoruz
-    mobileImage: "https://lh3.googleusercontent.com/d/1JIV82tCLOdeIeBcsQwITd_e6FAGXTZ68=w1920?authuser=0", 
+    // Mobilde de ilk görseli kullanıyoruz
+    mobileImage: "https://lh3.googleusercontent.com/d/1sUibfS87tPLSe7F91u6a7ZF3YTDX3I0k=w1920?authuser=0", 
     isMobileLandscape: true
   },
   {
@@ -81,7 +81,7 @@ const stories: Story[] = [
     ],
     stat: "Geliştirme Süresi: 3 Hafta",
     images: [
-      "https://lh3.googleusercontent.com/d/1uXEA7-AtdFspI0asVyQzCbF9fQ21sWC-=w1920?authuser=0", // Performans Listesi
+      "https://lh3.googleusercontent.com/d/1x-I_q6p7gtUclCZ3-358nUpM1R70QoGg=w1920?authuser=0", // Performans Ana Ekran
       "https://lh3.googleusercontent.com/d/1Hj5AO62oLNwhEtrsuabY-QiQuVrY1zwX=w1920?authuser=0"  // Yönetim Dashboard
     ],
     mobileImage: undefined
@@ -111,10 +111,9 @@ const stories: Story[] = [
     ],
     stat: "6 Haftada Canlıya Geçiş",
     images: [
-      "https://lh3.googleusercontent.com/d/12R5pQX4l1sTpATsvzIYk4v2gBWml9VSs=w1920?authuser=0",
-      "https://lh3.googleusercontent.com/d/1vC9q0auDdac9V6qa6g2cw5u_LWhEJE5p=w1920?authuser=0",
-      "https://lh3.googleusercontent.com/d/1Fov3axAi5sQLXHJdz7_rszi0dromj7Zf=w1920?authuser=0",
-      "https://lh3.googleusercontent.com/d/1PEaiFzTvTReAeB5tcxgSTUQLs53wnHdP=w1920?authuser=0"
+      "https://lh3.googleusercontent.com/d/1iPz9LOlBh5rmiv1gaqIFndX5eRhe9Nmf=w1920?authuser=0",
+      "https://lh3.googleusercontent.com/d/16IuD9lQMQ8OYe8lCqe5rRnmnR5HQGJYe=w1920?authuser=0",
+      "https://lh3.googleusercontent.com/d/18jQmTkA4BxeyTj7TfnXvK6uz9yz83kWs=w1920?authuser=0"
     ],
     mobileImage: undefined
   }
@@ -129,7 +128,7 @@ const LaptopSlider: React.FC<{ images: string[] }> = ({ images }) => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 4000);
-    return () => clearInterval(timer);
+    return () => { clearInterval(timer); };
   }, [images.length]);
 
   return (
@@ -168,10 +167,11 @@ const MobileFrame: React.FC<{ image: string; isLandscape?: boolean }> = ({ image
   // Landscape vs Portrait sizing
   // Increased Landscape size slightly from 480px to 540px based on user feedback
   const widthClass = isLandscape 
-    ? "w-[290px] md:w-[420px] lg:w-[540px]" 
+    ? "w-[290px] md:w-[420px] lg:w-[500px]" 
     : "w-[120px] md:w-[160px] lg:w-[180px]";
   
-  const aspectRatio = isLandscape ? "aspect-[19.5/9]" : "aspect-[9/19.5]";
+  // Use aspect-video (16/9) for landscape to fit standard screenshots better than 19.5/9
+  const aspectRatio = isLandscape ? "aspect-video" : "aspect-[9/19.5]";
 
   return (
     <div className={`relative ${widthClass} z-20 transition-all duration-300`}>
@@ -182,13 +182,13 @@ const MobileFrame: React.FC<{ image: string; isLandscape?: boolean }> = ({ image
           <img 
             src={image} 
             alt="Mobile App" 
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-fill" 
           />
           {/* Notch Logic */}
           {isLandscape ? (
-             <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-5 bg-slate-900 rounded-r-xl z-30"></div>
+             <div className="absolute left-0 top-1/2 -translate-y-1/2 h-16 w-5 bg-slate-900 rounded-r-xl z-30 opacity-90"></div>
           ) : (
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-5 w-20 bg-slate-900 rounded-b-xl z-30"></div>
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-5 w-20 bg-slate-900 rounded-b-xl z-30 opacity-90"></div>
           )}
           
           {/* Reflection */}
@@ -292,14 +292,13 @@ const SuccessStories: React.FC = () => {
                 {story.mobileImage && (
                   <div className={`absolute -bottom-8 z-30 drop-shadow-2xl ${
                     story.isMobileLandscape 
-                      ? '-right-4 lg:-right-8 lg:-bottom-24' // Adjusted bottom further down to accommodate slight size increase
-                      : '-right-2 lg:-right-12 lg:-bottom-16'
+                      ? '-right-4 lg:-right-16 lg:-bottom-36' // Moved further down and right to cover less of the laptop
+                      : '-right-2 lg:-right-16 lg:-bottom-20'
                   }`}>
                      <MobileFrame image={story.mobileImage} isLandscape={story.isMobileLandscape} />
                   </div>
                 )}
               </div>
-
             </div>
           ))}
         </div>

@@ -22,11 +22,11 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-white">
-      {/* 3D Background - Fully Visible */}
+      {/* 3D Background */}
       <Hero3D />
       
-      {/* Very Light Overlay to help text readability without hiding 3D */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/80 pointer-events-none -z-10" />
+      {/* Light Overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/90 pointer-events-none -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
@@ -40,9 +40,9 @@ const Hero: React.FC = () => {
             O Zaman Dijitalleşmek <span className="gradient-text">Çok Kolay.</span>
           </h1>
           
-          <p className="text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed bg-white/40 backdrop-blur-sm rounded-lg p-2 -ml-2">
+          <p className="text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed bg-white/60 backdrop-blur-sm rounded-lg p-2 -ml-2">
             Kurumsal süreçlerinizi özelleştirilmiş yazılımlarla dijitalleştiriyoruz. 
-            Manuel iş yükünü azaltın, verimliliği artırın ve Sharepoint ile kurumsal hafızanızı oluşturun.
+            Manuel iş yükünü azaltın, Excel'den kurtulun, verimliliğinizi artırın ve Sharepoint ile kurumsal hafızanızı oluşturun.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">

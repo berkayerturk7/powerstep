@@ -6,7 +6,6 @@ import Services from './components/Services';
 import Comparison from './components/Comparison';
 import SuccessStories from './components/SuccessStories';
 import SharepointSection from './components/SharepointSection';
-import AIConsultant from './components/AIConsultant';
 import Footer from './components/Footer';
 
 function App() {
@@ -21,8 +20,6 @@ function App() {
         <Comparison />
       </main>
       <Footer />
-      {/* Floating Widget placed outside main/footer flow */}
-      <AIConsultant />
     </div>
   );
 }

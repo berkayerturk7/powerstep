@@ -25,7 +25,6 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm">
               <li><a href="#services" className="hover:text-primary-400 transition-colors">Hizmetlerimiz</a></li>
               <li><a href="#comparison" className="hover:text-primary-400 transition-colors">Neden Biz?</a></li>
-              <li><a href="#consultant" className="hover:text-primary-400 transition-colors">Yapay Zeka Danışmanı</a></li>
               <li><a href="#contact" className="hover:text-primary-400 transition-colors">İletişim</a></li>
             </ul>
           </div>
